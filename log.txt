@@ -1,0 +1,27 @@
+URL: /
+Timestamp: Mon Sep 13 2021 16:51:11 GMT-0700 (Pacific Daylight Time)
+
+URL: /favicon.ico
+Timestamp: Mon Sep 13 2021 16:51:11 GMT-0700 (Pacific Daylight Time)
+
+URL: /document.html
+Timestamp: Mon Sep 13 2021 16:51:23 GMT-0700 (Pacific Daylight Time)
+
+URL: /favicon.ico
+Timestamp: Mon Sep 13 2021 16:51:23 GMT-0700 (Pacific Daylight Time)
+
+URL: /documentation
+Timestamp: Mon Sep 13 2021 16:51:47 GMT-0700 (Pacific Daylight Time)
+
+URL: /
+Timestamp: Mon Sep 13 2021 16:53:17 GMT-0700 (Pacific Daylight Time)
+
+URL: /favicon.ico
+Timestamp: Mon Sep 13 2021 16:53:17 GMT-0700 (Pacific Daylight Time)
+
+URL: /documentation
+Timestamp: Mon Sep 13 2021 16:53:23 GMT-0700 (Pacific Daylight Time)
+
+URL: /favicon.ico
+Timestamp: Mon Sep 13 2021 16:53:23 GMT-0700 (Pacific Daylight Time)
+
