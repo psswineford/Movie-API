@@ -33,6 +33,30 @@ let topMovies = [
     {
         title: 'Lord of the Rings',
         director: 'Peter Jackson'
+    },
+    {
+        title: 'Aliens',
+        director: 'James Cameron'
+    },
+    {
+        title: 'Raiders of the Lost Ark',
+        director: 'Steven Spielberg'
+    },
+    {
+        title: 'Braveheart',
+        director: 'Mel Gibson'
+    },
+    {
+        title: 'Dark Knight',
+        director: 'Christopher Nolan'
+    },
+    {
+        title: 'Sprited Away',
+        director: 'Hayao Miyazaki'
+    },
+    {
+        title: 'Back to the Future',
+        director: 'Robert Zemeckis'
     }
 ];
 
