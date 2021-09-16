@@ -1,12 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie API</title>
+    <link rel="stylesheet" href="styles.css">
+
 </head>
+
 <body>
-    <p>Movie API will be a web application to provide users with access to information about movies, directors, genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.</p>
+    <div class="ritz grid-container" dir="ltr">
+        <table class="waffle">
+
+            <tbody>
+
+                <tr style="height: 20px">
+                    <th id="0R1" style="height: 20px;" class="row-headers-background">
+                    </th>
+                    <td class="s1" dir="ltr">Business Logic</td>
+                    <td class="s1" dir="ltr">URL</td>
+                    <td class="s1" dir="ltr">HTTP Method</td>
+                    <td class="s1 softmerge" dir="ltr">
+                        <div class="softmerge-inner" style="width:166px;left:-1px">Request Body Data Format</div>
+                    </td>
+                    <td class="s1" dir="ltr">Response body data Format</td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R2" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2" dir="ltr">Get a List of Movies</td>
+                    <td class="s2" dir="ltr">/movies</td>
+                    <td class="s2" dir="ltr">GET</td>
+                    <td class="s2" dir="ltr">None</td>
+                    <td class="s3 softmerge" dir="ltr">
+                        <div class="softmerge-inner" style="width:352px;left:-1px">A JSON object holding data of the
+                            movies
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R3" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2 softmerge" dir="ltr">
+                        <div class="softmerge-inner" style="width:214px;left:-1px">Get data of a single movie by name
+                        </div>
+                    </td>
+                    <td class="s2" dir="ltr">/movies/[name]</td>
+                    <td class="s2" dir="ltr">GET</td>
+                    <td class="s2" dir="ltr">None</td>
+                    <td class="s4" dir="ltr">A JSON object holding data of the movies Structured like:<br>{<br>name:
+                        &#39;Dune&#39;,<br>Genre: &#39;Science Fiction&#39;,<br>Director: &#39;David Lynch&#39;<br>}
+                    </td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R4" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2 softmerge" dir="ltr">
+                        <div class="softmerge-inner" style="width:214px;left:-1px">Return movie Genre data by name</div>
+                    </td>
+                    <td class="s2" dir="ltr">/movies/[name]/genres</td>
+                    <td class="s2" dir="ltr">GET </td>
+                    <td class="s4" dir="ltr">None</td>
+                    <td class="s4" dir="ltr">A text message with the movies Genre</td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R5" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2 softmerge" dir="ltr">
+                        <div class="softmerge-inner" style="width:214px;left:-1px">Return movie directordata by name
+                        </div>
+                    </td>
+                    <td class="s2" dir="ltr">/movies/[name]/directors</td>
+                    <td class="s2" dir="ltr">GET</td>
+                    <td class="s4" dir="ltr">None</td>
+                    <td class="s4" dir="ltr">a text message with the movies director</td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R6" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2"></td>
+                    <td class="s2"></td>
+                    <td class="s2"></td>
+                    <td class="s2"></td>
+                    <td class="s2"></td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R7" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2" dir="ltr">Add new User</td>
+                    <td class="s2" dir="ltr">/users</td>
+                    <td class="s2" dir="ltr">POST</td>
+                    <td class="s4" dir="ltr">A JSON. object holding data about the movie to add structured
+                        like:<br>{<br>name: &#39;Shawn Swineford&#39;<br>}</td>
+                    <td class="s5" dir="ltr">a JSON object holding data about the user that was added, including an
+                        ID:<br>{<br>id:1,<br>name: &#39;Shawn Swineford&#39;<br>}</td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R8" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2" dir="ltr">Update user by ID</td>
+                    <td class="s2" dir="ltr">/users/[id]</td>
+                    <td class="s2" dir="ltr">POST</td>
+                    <td class="s4" dir="ltr">A JSON. object holding data about the user to update structured
+                        like:<br>{<br>name: &#39;Shawn Swineford&#39;<br>}</td>
+                    <td class="s5" dir="ltr">a JSON object holding data about the user that was updated, including an
+                        ID:<br>{<br>id:1,<br>name: &#39;Shawn Swineford&#39;<br>}</td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R9" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2" dir="ltr">Add a movie to users favorites</td>
+                    <td class="s2" dir="ltr">/users/favorites/[name]</td>
+                    <td class="s2" dir="ltr">POST</td>
+                    <td class="s4" dir="ltr">A JSON. object holding data about the movie to add structured
+                        like:<br>{<br>id:1,<br>name: &#39;Shawn Swineford&#39;,<br>movies: {<br> name: &#39;Star
+                        Wars&#39;,<br> name: &#39;Lord of the Rings&#39;<br> }<br>}</td>
+                    <td class="s5" dir="ltr">a text message indicating whether the movie was successfully added</td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R10" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2 softmerge" dir="ltr">
+                        <div class="softmerge-inner" style="width:214px;left:-1px">Remove a movie from users favorites
+                            by
+                            name</div>
+                    </td>
+                    <td class="s2" dir="ltr">/users/favorites/[name]</td>
+                    <td class="s2" dir="ltr">DELETE</td>
+                    <td class="s2" dir="ltr">None</td>
+                    <td class="s4" dir="ltr">a text message indicating whether the movie was successfully removed</td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R11" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2" dir="ltr">Delete User</td>
+                    <td class="s2" dir="ltr">/users/[name]</td>
+                    <td class="s2" dir="ltr">DELETE</td>
+                    <td class="s2" dir="ltr">none</td>
+                    <td class="s4" dir="ltr">a text message indicating whether the user was successfully removed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>

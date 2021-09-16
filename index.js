@@ -20,54 +20,106 @@ app.use((err, req, res, next) => {
 let topMovies = [
     {
         title: 'Star Wars',
+        genre: 'Science Fiction',
         director: 'George Lucas'
     },
     {
         title: 'The Crow',
+        genre: 'Science Fiction',
         director: 'Alex Proyas'
     },
     {
         title: 'The Matrix',
+        genre: 'Science Fiction',
         director: 'The Wachoskis'
     },
     {
         title: 'Lord of the Rings',
+        genre: 'Fantasy',
         director: 'Peter Jackson'
     },
     {
         title: 'Aliens',
+        genre: 'Science Fiction',
         director: 'James Cameron'
     },
     {
         title: 'Raiders of the Lost Ark',
+        genre: 'Action',
         director: 'Steven Spielberg'
     },
     {
         title: 'Braveheart',
+        genre: 'Drama',
         director: 'Mel Gibson'
     },
     {
         title: 'Dark Knight',
+        genre: 'Comic book',
         director: 'Christopher Nolan'
     },
     {
         title: 'Sprited Away',
+        genre: 'Animiated',
         director: 'Hayao Miyazaki'
     },
     {
         title: 'Back to the Future',
+        genre: 'Science Fiction',
         director: 'Robert Zemeckis'
     }
 ];
 
-//GET requests
-app.get('/', (req,res) => {
-    res.send('Welcome to my Movie List!');    
-});
+let users = [
+    {
+        ID: 1,
+        Name: 'Shawn Swineford',
+        Age: '46',
+        Favorite_Movies: [
+            {
+                Title: 'Star Wars'
+            },
+            {
+                Title: 'Lord of the Rings'
+            }
+        ]
+    }
+]
 
+//GET requests
+app.get('/', (req, res) => {
+    res.send('Welcome to my Movie List!');
+});
+// return all movies
 app.get('/movies', (req, res) => {
     res.json(topMovies);
 });
+
+//return movies by name
+app.get('/movies/:title', (req, res) => {
+    res.json(topMovies.find((topMovies) => { return topMovies.title === req.params.title }));
+});
+
+//return movies by genre
+app.get('/movies/:genre', (req, res) => {
+    res.send('Successful GET requests returning genre Data');
+});
+
+//return movies by director
+app.get('/movies/:director', (req, res) => {
+    res.send('Successful GET requests returning director Data');
+});
+
+//return all users
+app.get('/users', (req, res) => {
+    res.json(users);
+});
+
+//add user
+app.post('/users', (req, res) => {
+    res.status(201).send('Successfully added user');
+});
+
 
 // listen for requests
 app.listen(8080, () => {
