@@ -101,12 +101,12 @@ app.get('/movies/:title', (req, res) => {
 });
 
 //return movies by genre
-app.get('/movies/:genre', (req, res) => {
-    res.send('Successful GET requests returning genre Data');
+app.get('/genre/:title', (req, res) => {
+    res.send('Successful GET requests returning genre data');
 });
 
 //return movies by director
-app.get('/movies/:director', (req, res) => {
+app.get('/director/:title', (req, res) => {
     res.send('Successful GET requests returning director Data');
 });
 
@@ -118,6 +118,21 @@ app.get('/users', (req, res) => {
 //add user
 app.post('/users', (req, res) => {
     res.status(201).send('Successfully added user');
+});
+
+//delete user
+app.delete('/users/:name', (req, res) => {
+    res.status(201).send('Successfully removed user');
+});
+
+//add Favorite Movies to users
+app.post('/users/:id/movies/:title', (req, res) => {
+    res.status(201).send('Successfully added favorite move to user');
+});
+
+//Delete Favorite Movies from users
+app.delete('/users/:id/movies/:title', (req, res) => {
+    res.status(201).send('Successfully removed favorite move from user');
 });
 
 
