@@ -49,11 +49,25 @@
                         <div class="softmerge-inner" style="width:214px;left:-1px">Get data of a single movie by name
                         </div>
                     </td>
-                    <td class="s2" dir="ltr">/movies/[name]</td>
+                    <td class="s2" dir="ltr">/movies/:Title</td>
                     <td class="s2" dir="ltr">GET</td>
                     <td class="s2" dir="ltr">None</td>
-                    <td class="s4" dir="ltr">A JSON object holding data of the movies Structured like:<br>{<br>name:
-                        &#39;Dune&#39;,<br>Genre: &#39;Science Fiction&#39;,<br>Director: &#39;David Lynch&#39;<br>}
+                    <td class="s4" dir="ltr">"A JSON object holding data of the movies Structured like:<br>
+                        {<br>
+                            Title: {type: String, required: true},<br>
+                            Description: {type: String, required: true},<br>
+                            Genre: {<br>
+                                Name: String,<br>
+                                Description: String<br>
+                            },<br>
+                            Director: {<br>
+                                Name: String,<br>
+                                Bio: String,<br>
+                                Birth: Date <br>
+                            },<br>
+                            ImagePath: String,<br>
+                            Featured: Boolean<br>
+                        }<br>
                     </td>
                 </tr>
                 <tr style="height: 20px">
@@ -63,23 +77,34 @@
                     <td class="s2 softmerge" dir="ltr">
                         <div class="softmerge-inner" style="width:214px;left:-1px">Return movie Genre data by name</div>
                     </td>
-                    <td class="s2" dir="ltr">/movies/[name]/genres</td>
+                    <td class="s2" dir="ltr">/genres/:Name</td>
                     <td class="s2" dir="ltr">GET </td>
                     <td class="s4" dir="ltr">None</td>
-                    <td class="s4" dir="ltr">A text message with the movies Genre</td>
+                    <td class="s4" dir="ltr">"A JSON object holding data of the Genres: <br>
+                        {<br>
+                            Name: {type: String, required: true},<br>
+                            Description: {type: String, required: true}<br>
+                        }<br>
+                    </td>
                 </tr>
                 <tr style="height: 20px">
                     <th id="0R5" style="height: 20px;" class="row-headers-background">
 
                     </th>
                     <td class="s2 softmerge" dir="ltr">
-                        <div class="softmerge-inner" style="width:214px;left:-1px">Return movie directordata by name
+                        <div class="softmerge-inner" style="width:214px;left:-1px">Return movie director data by name
                         </div>
                     </td>
-                    <td class="s2" dir="ltr">/movies/[name]/directors</td>
+                    <td class="s2" dir="ltr">/directors/:Name</td>
                     <td class="s2" dir="ltr">GET</td>
                     <td class="s4" dir="ltr">None</td>
-                    <td class="s4" dir="ltr">a text message with the movies director</td>
+                    <td class="s4" dir="ltr">"A JSON object holding data of the directors:<br>
+                        {<br>
+                            Name: {type: String, required: true},<br>
+                            Bio: {type: String, required: true},<br>
+                            Birth: {type: Date, required: true},<br>
+                        }<br>
+                    </td>
                 </tr>
                 <tr style="height: 20px">
                     <th id="0R6" style="height: 20px;" class="row-headers-background">
@@ -92,61 +117,139 @@
                     <td class="s2"></td>
                 </tr>
                 <tr style="height: 20px">
+                    <th id="0R13" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2" dir="ltr">Return all users</td>
+                    <td class="s2" dir="ltr">/users/</td>
+                    <td class="s2" dir="ltr">GET</td>
+                    <td class="s4" dir="ltr">None</td>
+                    <td class="s5" dir="ltr">"a JSON object holding data about all users:<br>
+                        {<br>
+                            Username: {type: String, required: true},<br>
+                            Password: {type: String, required: true},<br>
+                            Email: {type: String, required: true},<br>
+                            Birthday: Date,<br>
+                            FavoriteMovies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]<br>
+                        }<br>
+                    </td>
+                </tr>
+                <tr style="height: 20px">
+                    <th id="0R12" style="height: 20px;" class="row-headers-background">
+
+                    </th>
+                    <td class="s2" dir="ltr">Return Users by name</td>
+                    <td class="s2" dir="ltr">/users/:Username</td>
+                    <td class="s2" dir="ltr">GET</td>
+                    <td class="s4" dir="ltr">None</td>
+                    <td class="s5" dir="ltr">"a JSON object holding data about the user:<br>
+                        {<br>
+                            Username: {type: String, required: true},<br>
+                            Password: {type: String, required: true},<br>
+                            Email: {type: String, required: true},<br>
+                            Birthday: Date,<br>
+                            FavoriteMovies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]<br>
+                        }<br>
+                    </td>
+                </tr>
+                <tr style="height: 20px">
                     <th id="0R7" style="height: 20px;" class="row-headers-background">
 
                     </th>
                     <td class="s2" dir="ltr">Add new User</td>
                     <td class="s2" dir="ltr">/users</td>
                     <td class="s2" dir="ltr">POST</td>
-                    <td class="s4" dir="ltr">A JSON. object holding data about the movie to add structured
-                        like:<br>{<br>name: &#39;Shawn Swineford&#39;<br>}</td>
-                    <td class="s5" dir="ltr">a JSON object holding data about the user that was added, including an
-                        ID:<br>{<br>id:1,<br>name: &#39;Shawn Swineford&#39;<br>}</td>
+                    <td class="s4" dir="ltr">"A JSON. object holding data about the movie to add structured like:<br>
+                        {<br>
+                            Username: {type: String, required: true},<br>
+                            Password: {type: String, required: true},<br>
+                            Email: {type: String, required: true},<br>
+                            Birthday: Date,<br>
+                            FavoriteMovies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]<br>
+                        }<br>
+                    </td>
+                    <td class="s5" dir="ltr">"a JSON object holding data about the user that was added, including an ID:<br>
+                        {<br>
+                            Username: {type: String, required: true},<br>
+                            Password: {type: String, required: true},<br>
+                            Email: {type: String, required: true},<br>
+                            Birthday: Date,<br>
+                            FavoriteMovies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]<br>
+                        }<br>
+                    </td>
                 </tr>
                 <tr style="height: 20px">
                     <th id="0R8" style="height: 20px;" class="row-headers-background">
 
                     </th>
-                    <td class="s2" dir="ltr">Update user by ID</td>
-                    <td class="s2" dir="ltr">/users/[id]</td>
+                    <td class="s2" dir="ltr">Update user by Username</td>
+                    <td class="s2" dir="ltr">/users/:Username</td>
                     <td class="s2" dir="ltr">POST</td>
-                    <td class="s4" dir="ltr">A JSON. object holding data about the user to update structured
-                        like:<br>{<br>name: &#39;Shawn Swineford&#39;<br>}</td>
-                    <td class="s5" dir="ltr">a JSON object holding data about the user that was updated, including an
-                        ID:<br>{<br>id:1,<br>name: &#39;Shawn Swineford&#39;<br>}</td>
+                    <td class="s4" dir="ltr">
+                        "A JSON. object holding data about the movie to add structured like:<br>
+                        {<br>
+                            Username: {type: String, required: true},<br>
+                            Password: {type: String, required: true},<br>
+                            Email: {type: String, required: true},<br>
+                            Birthday: Date,<br>
+                            FavoriteMovies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]<br>
+                        }<br>
+                    </td>
+                    <td class="s5" dir="ltr">
+                        "a JSON object holding data about the user that was added, including an ID:<br>
+                        {<br>
+                            Username: {type: String, required: true},<br>
+                            Password: {type: String, required: true},<br>
+                            Email: {type: String, required: true},<br>
+                            Birthday: Date,<br>
+                            FavoriteMovies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]<br>
+                        }<br>
+                    </td>
                 </tr>
                 <tr style="height: 20px">
                     <th id="0R9" style="height: 20px;" class="row-headers-background">
 
                     </th>
                     <td class="s2" dir="ltr">Add a movie to users favorites</td>
-                    <td class="s2" dir="ltr">/users/favorites/[name]</td>
+                    <td class="s2" dir="ltr">/users/:Username/movies/:MovieID</td>
                     <td class="s2" dir="ltr">POST</td>
-                    <td class="s4" dir="ltr">A JSON. object holding data about the movie to add structured
-                        like:<br>{<br>id:1,<br>name: &#39;Shawn Swineford&#39;,<br>movies: {<br> name: &#39;Star
-                        Wars&#39;,<br> name: &#39;Lord of the Rings&#39;<br> }<br>}</td>
-                    <td class="s5" dir="ltr">a text message indicating whether the movie was successfully added</td>
+                    <td class="s4" dir="ltr">None</td>
+                    <td class="s5" dir="ltr">"a JSON object holding data about the user that was updated:<br>
+                        {<br>
+                            Username: {type: String, required: true},<br>
+                            Password: {type: String, required: true},<br>
+                            Email: {type: String, required: true},<br>
+                            Birthday: Date,<br>
+                            FavoriteMovies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]<br>
+                        }<br>
+                    </td>
                 </tr>
                 <tr style="height: 20px">
                     <th id="0R10" style="height: 20px;" class="row-headers-background">
 
                     </th>
                     <td class="s2 softmerge" dir="ltr">
-                        <div class="softmerge-inner" style="width:214px;left:-1px">Remove a movie from users favorites
-                            by
-                            name</div>
+                        <div class="softmerge-inner" style="width:214px;left:-1px">Remove a movie from users<br>favorites by name</div>
                     </td>
                     <td class="s2" dir="ltr">/users/favorites/[name]</td>
                     <td class="s2" dir="ltr">DELETE</td>
                     <td class="s2" dir="ltr">None</td>
-                    <td class="s4" dir="ltr">a text message indicating whether the movie was successfully removed</td>
+                    <td class="s4" dir="ltr">a JSON object holding data about the user that was updated:<br>
+                        {<br>
+                            Username: {type: String, required: true},<br>
+                            Password: {type: String, required: true},<br>
+                            Email: {type: String, required: true},<br>
+                            Birthday: Date,<br>
+                            FavoriteMovies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]<br>
+                        }<br>
+                    </td>
                 </tr>
                 <tr style="height: 20px">
                     <th id="0R11" style="height: 20px;" class="row-headers-background">
 
                     </th>
                     <td class="s2" dir="ltr">Delete User</td>
-                    <td class="s2" dir="ltr">/users/[name]</td>
+                    <td class="s2" dir="ltr">/users/:Username</td>
                     <td class="s2" dir="ltr">DELETE</td>
                     <td class="s2" dir="ltr">none</td>
                     <td class="s4" dir="ltr">a text message indicating whether the user was successfully removed</td>
