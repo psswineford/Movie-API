@@ -2,6 +2,7 @@ const { response } = require('express');
 const express = require('express'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    uuid = require('uuid'),
     mongoose = require('mongoose'),
     Models = require('./models.js');
 
@@ -22,8 +23,15 @@ app.use(express.static('public'));
 
 // Log all requests utlizing Morgan
 app.use(morgan('common'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json()); //Used to parse json bodies
+app.use(express.urlencoded({extended: true})); //parse URL-encoded bodies
+
+let auth = require('./auth')(app);
+
+const passport = require('passport');
+require('./passport');
 
 //error handling
 app.use((err, req, res, next) => {
@@ -36,7 +44,7 @@ app.get('/', (req, res) => {
     res.send('Welcome to my Movie List!');
 });
 // return all movies
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', {session: false}),(req, res) => {
     Movies.find()
         .then(movies => {
             res.status(201).json(movies);
